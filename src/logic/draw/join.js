@@ -3,7 +3,7 @@ const {
   ActionRowBuilder,
   ButtonStyle,
 } = require('discord.js');
-const { draws } = require('../../drawData');
+const { draws } = require('../../data/draw');
 async function joinDraw(interaction) {
   const drawData = draws.get(interaction.message.interaction.id);
   if (!drawData) return;

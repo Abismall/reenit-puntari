@@ -4,7 +4,7 @@ const {
   ButtonStyle,
   ActionRowBuilder,
 } = require('discord.js');
-const { draws } = require('../../drawData');
+const { draws } = require('../../data/draw');
 
 module.exports = {
   data: new SlashCommandBuilder()

@@ -1,4 +1,4 @@
-const { draws } = require('../../drawData');
+const { draws } = require('../../data/draw');
 async function finalizeDraw(interaction) {
   const drawData = draws.get(interaction.message.interaction.id);
   if (!drawData) return;
