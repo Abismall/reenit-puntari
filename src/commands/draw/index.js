@@ -6,17 +6,13 @@ module.exports = {
     .setName('draw')
     .setDescription('Draw options.'),
   async execute(interaction) {
-    const drawData = {
+    const msg = await interaction.reply({
+      content: `**Draw Session**\nCreator: <@${interaction.user.id}>\nJoined: 1 user`,
+      components: [createDrawButtonMenu()],
+    });
+    draws.set(msg.id, {
       creator: interaction.user.id,
       users: [interaction.user.id],
-    };
-
-    const messageData = {
-      content: `**Draw Session**\nCreator: <@${drawData.creator}>\nJoined: 1 user`,
-      components: [createDrawButtonMenu()],
-    };
-
-    const sentMessage = await interaction.reply(messageData);
-    draws.set(sentMessage.id, drawData);
+    });
   },
 };
