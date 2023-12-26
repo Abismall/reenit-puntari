@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { draws } = require('../../data/draw');
-const { createDrawButtonMenu } = require('../../logic/draw/utils');
+const { createDrawButtonMenu } = require('../../logic/draw');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('draw')

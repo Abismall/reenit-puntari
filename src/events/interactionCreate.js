@@ -1,6 +1,5 @@
 const { Events } = require('discord.js');
-const joinDraw = require('../logic/draw/join');
-const finalizeDraw = require('../logic/draw/finalize');
+const { joinDraw, finalizeDraw } = require('../logic/draw');
 module.exports = {
   name: Events.InteractionCreate,
   async execute(interaction) {
