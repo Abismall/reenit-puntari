@@ -1,7 +1,6 @@
 const { Events } = require('discord.js');
 const joinDraw = require('../logic/draw/join');
 const finalizeDraw = require('../logic/draw/finalize');
-const errorExecutingCommand = require('../logic/error/command');
 module.exports = {
   name: Events.InteractionCreate,
   async execute(interaction) {
@@ -20,7 +19,19 @@ module.exports = {
       try {
         await command.execute(interaction);
       } catch (error) {
-        await errorExecutingCommand(interaction);
+        if (interaction.replied || interaction.deferred) {
+          await interaction.followUp({
+            content:
+              'There was an error while executing this command!',
+            ephemeral: true,
+          });
+        } else {
+          await interaction.reply({
+            content:
+              'There was an error while executing this command!',
+            ephemeral: true,
+          });
+        }
       }
     } else if (interaction.isButton()) {
       if (interaction.customId === 'join_draw') {
